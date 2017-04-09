@@ -14,15 +14,15 @@ y_train_folds=np.array_split(y_train,num_folds)
 
 # method 2, split index
 
-xindex=np.array_split(np.random.permutation(num_train),num_folds)
+mask=np.array_split(np.random.permutation(num_train),num_folds)
 
   for i in range(0,num_folds):        
-        index_folds = list(xindex)
-        index_val  = index_folds.pop(i)
-        index_folds = np.concatenate(index_folds)        
+        mask_train = list(mask)
+        mask_val  = mask_train.pop(i)
+        mask_train = np.concatenate(mask_train)        
         
-        X_train[index_folds]
-        y_train[index_folds]
+        X_train[mask_train]
+        y_train[mask_train]
         
-        X_train[index_val]
-        y_train[index_val]
+        X_train[mask_val]
+        y_train[mask_val]
